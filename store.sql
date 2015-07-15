@@ -9,14 +9,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -29,7 +29,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: application; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: application; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE application (
@@ -71,7 +71,7 @@ ALTER SEQUENCE application_id_application_seq OWNED BY application.id;
 
 
 --
--- Name: avis; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: avis; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE avis (
@@ -98,7 +98,7 @@ CREATE VIEW average_commentaires AS
 ALTER TABLE public.average_commentaires OWNER TO sultano;
 
 --
--- Name: avg_app_dev; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: avg_app_dev; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE avg_app_dev (
@@ -152,7 +152,7 @@ ALTER SEQUENCE avis_id_avis_seq OWNED BY avis.id_avis;
 
 
 --
--- Name: info_payement; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: info_payement; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE info_payement (
@@ -189,7 +189,7 @@ ALTER SEQUENCE info_payement_id_compte_seq OWNED BY info_payement.id;
 
 
 --
--- Name: liste_applications; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: liste_applications; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE liste_applications (
@@ -201,7 +201,7 @@ CREATE TABLE liste_applications (
 ALTER TABLE public.liste_applications OWNER TO sultano;
 
 --
--- Name: mot_cle; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: mot_cle; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE mot_cle (
@@ -245,7 +245,7 @@ CREATE VIEW num_app_developpee AS
 ALTER TABLE public.num_app_developpee OWNER TO sultano;
 
 --
--- Name: peripherique; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: peripherique; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE peripherique (
@@ -314,7 +314,7 @@ CREATE VIEW profit_dev AS
 ALTER TABLE public.profit_dev OWNER TO sultano;
 
 --
--- Name: systeme_exploitation; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: systeme_exploitation; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE systeme_exploitation (
@@ -350,7 +350,7 @@ ALTER SEQUENCE systeme_exploitation_id_se_seq OWNED BY systeme_exploitation.id;
 
 
 --
--- Name: telechargement; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: telechargement; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE telechargement (
@@ -386,7 +386,7 @@ ALTER SEQUENCE telechargement_id_seq OWNED BY telechargement.id;
 
 
 --
--- Name: utilisateur; Type: TABLE; Schema: public; Owner: sultano; Tablespace: 
+-- Name: utilisateur; Type: TABLE; Schema: public; Owner: sultano; Tablespace:
 --
 
 CREATE TABLE utilisateur (
@@ -5204,7 +5204,7 @@ COPY utilisateur (id, mail, mot_de_passe, num_install, type, nom, prenom) FROM s
 
 
 --
--- Name: application_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: application_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY application
@@ -5212,7 +5212,7 @@ ALTER TABLE ONLY application
 
 
 --
--- Name: avis_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: avis_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY avis
@@ -5220,7 +5220,7 @@ ALTER TABLE ONLY avis
 
 
 --
--- Name: cle_primaire; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: cle_primaire; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY mot_cle
@@ -5228,7 +5228,7 @@ ALTER TABLE ONLY mot_cle
 
 
 --
--- Name: info_payement_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: info_payement_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY info_payement
@@ -5236,7 +5236,7 @@ ALTER TABLE ONLY info_payement
 
 
 --
--- Name: peripherique_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: peripherique_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY peripherique
@@ -5244,7 +5244,7 @@ ALTER TABLE ONLY peripherique
 
 
 --
--- Name: systeme_exploitation_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: systeme_exploitation_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY systeme_exploitation
@@ -5252,7 +5252,7 @@ ALTER TABLE ONLY systeme_exploitation
 
 
 --
--- Name: user_mail_key; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: user_mail_key; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY utilisateur
@@ -5260,7 +5260,7 @@ ALTER TABLE ONLY utilisateur
 
 
 --
--- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace: 
+-- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: sultano; Tablespace:
 --
 
 ALTER TABLE ONLY utilisateur
@@ -5383,4 +5383,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-

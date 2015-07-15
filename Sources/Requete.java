@@ -20,10 +20,10 @@ public abstract class Requete{
 			return true;
 		}
 		catch(SQLException e)
-		{ 
-			e.printStackTrace(); 
+		{
+			e.printStackTrace();
 			return false;
-		}	
+		}
 	}
 
 	public static boolean update(String nom_table, Hashtable<String,String> parametres){
@@ -43,8 +43,8 @@ public abstract class Requete{
 			return true;
 		}
 		catch(SQLException e)
-		{ 
-			e.printStackTrace(); 
+		{
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -73,8 +73,8 @@ public abstract class Requete{
 			return true;
 		}
 		catch(SQLException e)
-		{ 
-			e.printStackTrace(); 
+		{
+			e.printStackTrace();
 			return false;
 		}
 	}//fin insertInto
@@ -101,7 +101,7 @@ public abstract class Requete{
 	public static void afficheIntestationTable(Hashtable<String,String> parametres){
 		Enumeration<String> keys = parametres.keys();
 		int num_colonnes = parametres.size();
-		String ligne1 = "", ligne2 = "", nom_colonne = "", tmp = ""; 
+		String ligne1 = "", ligne2 = "", nom_colonne = "", tmp = "";
 		for(int i=0; i<num_colonnes; i++){
 			if(keys.hasMoreElements()){
 				tmp = keys.nextElement();
@@ -138,7 +138,7 @@ public abstract class Requete{
 	public static void afficheFinTable(Hashtable<String,String> parametres){
 		Enumeration<String> keys = parametres.keys();
 		int num_colonnes = parametres.size();
-		String ligne = ""; 
+		String ligne = "";
 		for(int i=0; i<num_colonnes; i++){
 			ligne += String.format("%15s","+---------------");
 		}//fin for
@@ -174,18 +174,3 @@ public abstract class Requete{
 
 	}
 }//Fin classe Requete
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

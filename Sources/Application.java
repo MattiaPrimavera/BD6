@@ -7,8 +7,8 @@ public class Application{ //id id_categorie, versio, prix, abonnements, num_tele
 	public Application(){}
 	public Application(
 		int id, String nom, int prix, boolean abonnement, int num_telechargements, int droits, String categorie, int mela, int version, int id_developpeur
-					  )
-	{ 
+					)
+	{
 		this.id_developpeur = id_developpeur;
 		this.mela = mela;
 		this.id = id;
@@ -22,9 +22,9 @@ public class Application{ //id id_categorie, versio, prix, abonnements, num_tele
 	}
 	public Hashtable<String,String> createHashTable(){
 		String abonnementS = null;
-		if(abonnement) 
+		if(abonnement)
 			abonnementS = "true";
-		else 
+		else
 			abonnementS = "false";
 		Hashtable<String,String> ht = new Hashtable<String,String>();
 		ht.put("id", Integer.toString(this.id));
@@ -37,7 +37,7 @@ public class Application{ //id id_categorie, versio, prix, abonnements, num_tele
 		ht.put("mela", Integer.toString(this.mela));
 		ht.put("version", Integer.toString(this.version));
 		ht.put("id_developpeur", Integer.toString(this.version));
-		return ht; 
+		return ht;
 	}
 	//getters
 	public int getIdDeveloppeur(){ return this.id_developpeur; }
@@ -50,7 +50,7 @@ public class Application{ //id id_categorie, versio, prix, abonnements, num_tele
 	public int getNumTelechargements(){ return this.num_telechargements; }
 	public boolean getAbonnement(){ return this.abonnement; }
 	public int getDroits(){ return this.droits; }
-	//setters 
+	//setters
 	public void setIdDeveloppeur(int id){ this.id = id; }
 	public void setId(int id){ this.id = id; }
 	public void setCategorie(String categorie){ this.categorie = categorie; }
@@ -71,4 +71,4 @@ public class Application{ //id id_categorie, versio, prix, abonnements, num_tele
 		}
 		System.out.println();
 	}
-}//Fin classe Utilisateur	
+}//Fin classe Utilisateur

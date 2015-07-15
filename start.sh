@@ -8,8 +8,3 @@ mkdir Objects
 javac ./Sources/*.java -d Objects
 cd Objects
 java Main
-
-
-
-
-

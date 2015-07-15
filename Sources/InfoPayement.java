@@ -6,10 +6,10 @@ public class InfoPayement{
 
 	public InfoPayement(){}
 	public InfoPayement(int id, long num_compte, String type, int id_user)
-	{ 
+	{
 		this.id_user = id_user;
 		this.id = id;
-		this.type = type; 
+		this.type = type;
 		this.num_compte = num_compte;
 	}
 	//getters
@@ -24,9 +24,9 @@ public class InfoPayement{
 	public void setType(String type){ this.type = type; }
 	public void afficher(){
 		System.out.println("id =" + this.id +"\n" +
-						   "type = " + this.type +"\n" +
-						   "num_compte = " + this.num_compte +
-						   "id_user = " + this.id_user 
+							"type = " + this.type +"\n" +
+							"num_compte = " + this.num_compte +
+							"id_user = " + this.id_user
 			);
 	}//fin afficher
 

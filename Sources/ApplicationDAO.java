@@ -9,18 +9,18 @@ public class ApplicationDAO extends DAO<Application>{
 	public boolean delete(Application obj){
 		return Requete.deleteFrom("application", obj.createHashTable());
 	}
-	public boolean update(Application obj){ 
+	public boolean update(Application obj){
 		return Requete.update("application", obj.createHashTable());
 	}
 
- 	//id, id_categorie, versio, prix, abonnements, num_telechargements, nom
+	//id, id_categorie, versio, prix, abonnements, num_telechargements, nom
 	public Application find(int id){
 		Application application = null;
 		try{
 			ResultSet result; //int id, int id_categorie, int version, int prix, boolean abonnement, int num_telechargements, String nom
 			if((result = Requete.demander(this.connect, Requete.selectWhere("application", "id", Integer.toString(id))))!=null){
-				application = new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+				application = new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 						result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")
 					);
 			}
@@ -42,12 +42,12 @@ public ArrayList<Application> creerListeApplicationsDevel(Utilisateur user){
 		try{
 			ResultSet result = Requete.demander(this.connect, Requete.selectWhere("application", "id_developpeur", Integer.toString(user.getId())));
 			if(result.first())
-				liste_applications_devel.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+				liste_applications_devel.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 						result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
-			while(result.next()){ 
-				liste_applications_devel.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+			while(result.next()){
+				liste_applications_devel.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 						result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
 			}
 			result.close();
@@ -59,17 +59,17 @@ public ArrayList<Application> creerListeApplicationsDevel(Utilisateur user){
 	public ArrayList<Application> creerListeApplications(Utilisateur user){
 		ArrayList<Application> liste_applications = new ArrayList<Application>();
 		String requete = "SELECT application.id, application.nom, prix, abonnement, num_telechargements, droits, categorie, mela, version, id_developpeur" +
-						" FROM application " + 
+						" FROM application " +
 						"INNER JOIN liste_applications ON (application.id = id_application) where id_user = " + user.getId();
 		try{
 			ResultSet result = Requete.demander(this.connect, requete);
 			if(result.first())
-				liste_applications.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+				liste_applications.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 						result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
-			while(result.next()){ 
-				liste_applications.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+			while(result.next()){
+				liste_applications.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+						result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 						result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
 			}
 			result.close();
@@ -78,7 +78,7 @@ public ArrayList<Application> creerListeApplicationsDevel(Utilisateur user){
 		return liste_applications;
 	}//fin méthode
 
-	//Permet à l'utilisateur d'inserer les info necessaire pour ajouter une appli dans la base 
+	//Permet à l'utilisateur d'inserer les info necessaire pour ajouter une appli dans la base
 	//=> appelle la fonction create() qui s'occupe de la mise à jour effective de la base...
 	public void ajouterApplication(Utilisateur user){
 		String nom, categorie, abonnement_str;
@@ -196,9 +196,9 @@ public ArrayList<Application> creerListeApplicationsDevel(Utilisateur user){
 					state.close();
 				}
 				catch(SQLException e)
-				{ 
-					e.printStackTrace(); 
-				}	
+				{
+					e.printStackTrace();
+				}
 				application_effacee = true;
 				ArrayList<Application> listeApplications = this.creerListeApplications(user);
 				System.out.println(listeApplications.size() + "LUNGHEZZA ");
@@ -255,5 +255,3 @@ public ArrayList<Application> creerListeApplicationsDevel(Utilisateur user){
 		this.update(new_app);
 	}//fin méthode modification
 }//fin classe DAO<Peripherique>
-
-

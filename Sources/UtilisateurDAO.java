@@ -13,7 +13,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	public boolean delete(Utilisateur obj){
 		return Requete.deleteFrom("utilisateur", obj.createHashTable());
 	}
-	public boolean update(Utilisateur obj){ 
+	public boolean update(Utilisateur obj){
 		return Requete.update("utilisateur", obj.createHashTable());
 	}
 
@@ -22,7 +22,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		try{
 			ResultSet result;
 			if((result = Requete.demander(this.connect, Requete.selectWhere("utilisateur", "id", Integer.toString(id))))!=null){
-				utilisateur = new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+				utilisateur = new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 					result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom"));
 			}
 			result.close();
@@ -36,7 +36,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		try{
 			ResultSet result;
 			if((result = Requete.demander(this.connect, Requete.selectWhere("utilisateur", "mail", mail)))!=null) {
-				utilisateur = new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+				utilisateur = new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 					result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom"));
 			}
 			result.close();
@@ -53,7 +53,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 			return false;
 	}
 
-	public Connection getConnection(){ return this.connect; } 
+	public Connection getConnection(){ return this.connect; }
 
 	public void chargeDonneesUtilisateur(ApplicationDAO applicationDAO, PeripheriqueDAO peripheriqueDAO, Utilisateur user){
 		user.setListePeripheriques(peripheriqueDAO.creerListePeripheriques(user));
@@ -75,7 +75,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 			System.out.println("-----PINEAPPLE STORE-----");
 			System.out.print("MAIL: ");
 			mail = sc.nextLine();
-			//Si il y a un utilisateur avec la mail inseré par l'user actuel dans la base de données ... 
+			//Si il y a un utilisateur avec la mail inseré par l'user actuel dans la base de données ...
 			if((utilisateur = this.find(mail)) != null){
 				sc = new Scanner(System.in);
 				System.out.print("MOT_DE_PASSE: ");
@@ -89,7 +89,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 				}
 				else{
 					System.out.println("ERR MOT DE PASSE! ");
-					continue;	
+					continue;
 				}
 			}//fin if
 			else{
@@ -125,7 +125,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		//Verification de la présence de l'adresse Mail dans la liste utilisateurs
 
 
-	
+
 
 }//fin classe DAO<Utilisateur>
 
@@ -140,7 +140,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 				Requete.selectAll("utilisateur")
 			);
 			while(result.next())
-				listUtilisateurs.add(new Utilisateur(result.getInt("id"), result.getInt("mela"), result.getString("type"), result.getString("mail"), 
+				listUtilisateurs.add(new Utilisateur(result.getInt("id"), result.getInt("mela"), result.getString("type"), result.getString("mail"),
 					result.getString("mot_de_passe"), result.getInt("num_install"), result.getInt("id_compte")));
 
 		}//fin try

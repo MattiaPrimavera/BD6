@@ -8,7 +8,7 @@ public class PeripheriqueDAO extends DAO<Peripherique>{
 	public boolean delete(Peripherique obj){
 		return Requete.deleteFrom("peripherique", obj.createHashTable());
 	}
-	public boolean update(Peripherique obj){ 
+	public boolean update(Peripherique obj){
 		return Requete.update("peripherique", obj.createHashTable());
 	}
 
@@ -17,7 +17,7 @@ public class PeripheriqueDAO extends DAO<Peripherique>{
 		try{
 			ResultSet result = Requete.demander(this.connect, Requete.selectWhere("peripherique", "id", Integer.toString(id)));
 			if(result.first()){
-				peripherique = new Peripherique(result.getInt("id"), result.getString("nom"), result.getInt("id_se"), 
+				peripherique = new Peripherique(result.getInt("id"), result.getString("nom"), result.getInt("id_se"),
 					result.getString("nom_fabriquant"), result.getInt("id_user"));
 			} //id | nom  | id_se | nom_fabriquant | id_user
 			//else { System.out.println("ERR!!! Utilisateur n'existe pas dans la base ... "); }
@@ -83,7 +83,7 @@ public class PeripheriqueDAO extends DAO<Peripherique>{
 				if(droit_effacer == true)
 					break;
 			}//fin while
-		
+
 			while(!reponse.equals("non") && !reponse.equals("oui")){
 				System.out.print("CONFIRMER? : ");
 				reponse = sc.nextLine();
@@ -105,10 +105,10 @@ public class PeripheriqueDAO extends DAO<Peripherique>{
 		try{
 			String requete = "select peripherique.id, peripherique.nom, id_se, nom_fabriquant, ";
 			requete += "id_user from peripherique inner JOIN utilisateur ON (utilisateur.id = peripherique.id_user) where id_user = ";
-			requete += user.getId(); 
+			requete += user.getId();
 			ResultSet result = Requete.demander(this.connect, requete);
 			while(result.next()){  //id | nom  | id_se | nom_fabriquant | id_user
-				liste_peripheriques.add(new Peripherique(result.getInt("id"), result.getString("nom"), result.getInt("id_se"), 
+				liste_peripheriques.add(new Peripherique(result.getInt("id"), result.getString("nom"), result.getInt("id_se"),
 						result.getString("nom_fabriquant"), result.getInt("id_user")));
 			}//fin while
 			result.close();
@@ -116,5 +116,3 @@ public class PeripheriqueDAO extends DAO<Peripherique>{
 		return liste_peripheriques;
 	}//fin méthode
 }//fin classe DAO<Peripherique>
-
-

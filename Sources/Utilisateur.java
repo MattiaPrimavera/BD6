@@ -10,12 +10,12 @@ public class Utilisateur{
 	public Utilisateur(
 		int id, int type, String mail,
 		String mot_de_passe, int num_install, String nom, String prenom
-					  )
-	{ 
+					)
+	{
 		this.id = id;
 		this.type = type;
 		this.nom = nom;
-		this.prenom = prenom; 
+		this.prenom = prenom;
 		this.mail = mail;
 		this.mot_de_passe = mot_de_passe;
 		this.num_install = num_install;
@@ -29,7 +29,7 @@ public class Utilisateur{
 		ht.put("nom", this.nom);
 		ht.put("mot_de_passe", this.mot_de_passe);
 		ht.put("num_install", Integer.toString(num_install));
-		
+
 		return ht;
 	}
 	//getters
@@ -63,4 +63,4 @@ public class Utilisateur{
 		}//fin while
 	}//méthode affiche
 
-}//Fin classe Utilisateur	
+}//Fin classe Utilisateur

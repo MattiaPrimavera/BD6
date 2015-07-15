@@ -36,7 +36,7 @@ public class MotCleDAO extends DAO<MotCle>{
 					"INSERT INTO mot_cle(id, categorie.id, type) VALUES("
 						+ obj.getId() + ", "
 						+ obj.getIdCategorie() + ", "
-						+ obj.getType() + 
+						+ obj.getType() +
 					")"
 				);
 				System.out.println("nb mise a jour = "+nbMax);

@@ -3,13 +3,13 @@ import java.math.*;
 import java.util.*;
 public abstract class Menu{
 	//Fonction Qui gère la totalité de l'interaction avec l'utilisateur de notre programme => Affichage de tous les menu => ça permet de choisir des actiones
-	public static void affiche(Utilisateur user, UtilisateurDAO utilisateurDAO, ApplicationDAO applicationDAO, 
+	public static void affiche(Utilisateur user, UtilisateurDAO utilisateurDAO, ApplicationDAO applicationDAO,
 							PeripheriqueDAO peripheriqueDAO, SystemeExploitationDAO systemeDAO, InfoPayementDAO infoPayementDAO){
 		while(true){
 			int choix = -1;
 			//on affiche un menu qui diffère selon le type d'utilisateur
 			switch(user.getType()){
-				case 0: 
+				case 0:
 					choix = 4;
 					Menu.client();
 					System.out.println("--------------------------------\n0.\tSortir\n");
@@ -27,11 +27,11 @@ public abstract class Menu{
 				default:
 					break;
 			}
-			//Après avoir affiché un Menu de "choix" optiones plus "Sortir", on fait le switch en se servant de la fonction choisir(choix) 
+			//Après avoir affiché un Menu de "choix" optiones plus "Sortir", on fait le switch en se servant de la fonction choisir(choix)
 			//Pour etre sure que l'utilisateur va pouvoir choisir seulements une des optiones prévues.
 			switch(Menu.choisir(choix)){
 				case 1:
-					//1. Informations Personnelles (Client) 
+					//1. Informations Personnelles (Client)
 					while(true){
 						infoPersonnelles(user);
 						System.out.println("LISTE ACTIONS ---------------");
@@ -40,7 +40,7 @@ public abstract class Menu{
 						System.out.println("0.\tMenu Precedent\n");
 						switch(Menu.choisir(2)){
 							case 0: break;
-							case 1: 		
+							case 1:
 								utilisateurDAO.modificationInfosPersonnelles(user);
 								break;
 							case 2:
@@ -71,7 +71,7 @@ public abstract class Menu{
 						System.out.println("--------------------------------\n0.\tMenu Precedent\n");
 						switch(choix = Menu.choisir(3)){
 							case 0: break;
-							case 1: 
+							case 1:
 								System.out.println("\n------LISTE PERIPHERIQUES--------");
 								//System.out.println("id_user,\tnom,\tid_se,\tnom_fabriquant,\tid_periph");
 								ArrayList<Peripherique> listeMesPeripheriques = user.getListePeripheriques();
@@ -80,13 +80,13 @@ public abstract class Menu{
 								//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 								for(Peripherique peripherique : listeMesPeripheriques){
 									//application.affiche();
-									listeLignesTable = peripherique.createHashTable();	
+									listeLignesTable = peripherique.createHashTable();
 									Requete.afficheTable(listeLignesTable);
 								}
 								Requete.afficheFinTable(ht3);
 								System.out.println("\n");
 								break;
-							case 2: 
+							case 2:
 								System.out.println("\n--------AJOUTER--------");
 								peripheriqueDAO.ajouterPeripherique(user, systemeDAO.ajouterSysteme());
 								break;
@@ -124,22 +124,22 @@ public abstract class Menu{
 						if(mot_cle.equals(""))
 							result = Requete.demander(utilisateurDAO.getConnection(), Requete.selectWhere("application", "categorie", categorie));
 						else
-							result = Requete.demander(utilisateurDAO.getConnection(), 
-								"select *, mot_cle.type from application inner join mot_cle ON (application.id =  mot_cle.id_application) where mot_cle.type = " + mot_cle + " AND categorie = " + categorie);							
+							result = Requete.demander(utilisateurDAO.getConnection(),
+								"select *, mot_cle.type from application inner join mot_cle ON (application.id =  mot_cle.id_application) where mot_cle.type = " + mot_cle + " AND categorie = " + categorie);
 						if(result.first())
 						//int id, int type, String mail, String mot_de_passe, int num_install, String nom, String prenom
-							liste_filtree.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-								result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+							liste_filtree.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+								result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 								result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
 						while(result.next()){
-							liste_filtree.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"), 
-								result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"), 
+							liste_filtree.add(new Application(result.getInt("id"), result.getString("nom"), result.getInt("prix"),
+								result.getBoolean("abonnement"), result.getInt("num_telechargements"), result.getInt("droits"),
 								result.getString("categorie"), result.getInt("mela"), result.getInt("version"), result.getInt("id_developpeur")));
-						} 
+						}
 						Requete.afficheIntestationTable(liste_filtree.get(0).createHashTable());
 						//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 						for(Application application : liste_filtree){
-							//application.affiche();		
+							//application.affiche();
 							Requete.afficheTable(application.createHashTable());
 						}
 					}catch(SQLException e){ e.printStackTrace(); }
@@ -156,7 +156,7 @@ public abstract class Menu{
 					Requete.afficheIntestationTable(ht2);
 					//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 					for(Application application : listeApplications){
-						//application.affiche();		
+						//application.affiche();
 						listeLignesTable = application.createHashTable();
 						Requete.afficheTable(listeLignesTable);
 					}
@@ -164,8 +164,8 @@ public abstract class Menu{
 					System.out.println("\n1.\tDesinstaller");
 					System.out.println("0.\tMenu Precedent");
 					switch(Menu.choisir(1)){
-						case 1: 
-							applicationDAO.eliminerApplication(user);							
+						case 1:
+							applicationDAO.eliminerApplication(user);
 							break;
 						case 0:
 							break;
@@ -190,7 +190,7 @@ public abstract class Menu{
 							Requete.afficheIntestationTable(ht);
 							//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 							for(Application application : listeApplicationsDevel){
-								//application.affiche();		
+								//application.affiche();
 								listeLignesTable = application.createHashTable();
 								Requete.afficheTable(listeLignesTable);
 							}
@@ -205,7 +205,7 @@ public abstract class Menu{
 							System.out.println("---------METTRE A' JOUR----------");
 
 							break;
-						case 0: 
+						case 0:
 							break;
 						default:
 							break;
@@ -223,7 +223,7 @@ public abstract class Menu{
 							switch(choix = Menu.choisir(6)){
 								case 1:
 									System.out.println("-------Nombre Applis Par Type Peripherique-------");
-									Requete.extractionGenerale(utilisateurDAO.getConnection(), "select nom_peripherique, count(v_per_app.id_application) from v_per_app, application where id_developpeur = " + user.getId() + " group by nom_peripherique, application.id_developpeur  order by count DESC limit 10");							
+									Requete.extractionGenerale(utilisateurDAO.getConnection(), "select nom_peripherique, count(v_per_app.id_application) from v_per_app, application where id_developpeur = " + user.getId() + " group by nom_peripherique, application.id_developpeur  order by count DESC limit 10");
 									break;
 								case 2:
 									System.out.println("-------Application qui vendent le mieux-------");
@@ -271,9 +271,9 @@ public abstract class Menu{
 									ResultSet result = null;
 									try{
 										switch(choix = Menu.choisir(3)){
-											case 0: 
+											case 0:
 												break;
-											case 1: 
+											case 1:
 												System.out.println("----------NUMERO PERIPHERIQUES---------");
 												result = Requete.demander(utilisateurDAO.getConnection(), "SELECT COUNT(id) FROM peripherique");
 												if(result.first())
@@ -285,7 +285,7 @@ public abstract class Menu{
 												break;
 											case 3:
 												System.out.println("----------PERIPHERIQUES PLUS POPULAIRES---------");
-												Requete.extractionGenerale(utilisateurDAO.getConnection(), "select nom, COUNT(nom) from peripherique GROUP BY nom order by count DESC limit 15");	
+												Requete.extractionGenerale(utilisateurDAO.getConnection(), "select nom, COUNT(nom) from peripherique GROUP BY nom order by count DESC limit 15");
 												break;
 										}
 									}catch(SQLException e){ e.printStackTrace(); }
@@ -293,7 +293,7 @@ public abstract class Menu{
 										break;
 								}//fin while
 								break;
-							case 2:	
+							case 2:
 								break;
 							case 0:
 								break;
@@ -316,16 +316,16 @@ public abstract class Menu{
 								ResultSet result = Requete.demander(utilisateurDAO.getConnection(), Requete.selectWhere("utilisateur", "type", "0"));
 								if(result.first())
 								//int id, int type, String mail, String mot_de_passe, int num_install, String nom, String prenom
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								while(result.next()){
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								}
 								Requete.afficheIntestationTable(listeLignesTable);
 								//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 								for(Utilisateur utilisateur : liste_users){
-									//application.affiche();		
+									//application.affiche();
 									Requete.afficheTable(utilisateur.createHashTable());
 								}
 							}catch(SQLException e){ e.printStackTrace(); }
@@ -339,16 +339,16 @@ public abstract class Menu{
 								ResultSet result = Requete.demander(utilisateurDAO.getConnection(), Requete.selectWhere("utilisateur", "type", "1"));
 								if(result.first())
 								//int id, int type, String mail, String mot_de_passe, int num_install, String nom, String prenom
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								while(result.next()){
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								}
 								Requete.afficheIntestationTable(listeLignesTable);
 								//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 								for(Utilisateur utilisateur : liste_users){
-									//application.affiche();		
+									//application.affiche();
 									Requete.afficheTable(utilisateur.createHashTable());
 								}
 							}catch(SQLException e){ e.printStackTrace(); }
@@ -376,8 +376,8 @@ public abstract class Menu{
 										state.close();
 									}
 									catch(SQLException e)
-									{ 
-										e.printStackTrace(); 
+									{
+										e.printStackTrace();
 									}
 								case 2:
 									String[] liste_options_922 = {"Nombre App Developees", "Meilleur Feedback", "Nombre Telechargements", "Meuilleur Profit"};
@@ -393,7 +393,7 @@ public abstract class Menu{
 											case 2:
 												System.out.println("----------MEILLEUR FEEDBACK--------");
 												Requete.extractionGenerale(utilisateurDAO.getConnection(),"select id_developpeur, AVG(avg) from avg_app_dev GROUP BY id_developpeur order by avg DESC");
-												break;									
+												break;
 											case 3:
 												System.out.println("\n------MEILLEUR POUR NOMBRE TELECHARGEMENTS-----");
 												Requete.extractionGenerale(utilisateurDAO.getConnection(),"select distinct id_developpeur, id, nom,  prix, num_telechargements from application order by num_telechargements DESC limit 15");
@@ -409,7 +409,7 @@ public abstract class Menu{
 										}//fin switch
 										if(arriere == 0)
 											break;
-									}//fin while qui introduit le switch juste avant ... 
+									}//fin while qui introduit le switch juste avant ...
 								case 0:
 									break;
 							}//fin switch menu radier developpeur ou meuilleur developpeur
@@ -421,16 +421,16 @@ public abstract class Menu{
 								ResultSet result = Requete.demander(utilisateurDAO.getConnection(), Requete.selectWhere("utilisateur", "type", "2"));
 								if(result.first())
 								//int id, int type, String mail, String mot_de_passe, int num_install, String nom, String prenom
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								while(result.next()){
-									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"), 
+									liste_users.add(new Utilisateur(result.getInt("id"), result.getInt("type"), result.getString("mail"),
 										result.getString("mot_de_passe"), result.getInt("num_install"), result.getString("nom"), result.getString("prenom")));
 								}
 								Requete.afficheIntestationTable(listeLignesTable);
 								//System.out.println("id,\tabonn,\tcateg,\tversion,\tnom,\tdroits,\ttelech,\tmela,\tprix\t id_dev\n");
 								for(Utilisateur utilisateur : liste_users){
-									//application.affiche();		
+									//application.affiche();
 									Requete.afficheTable(utilisateur.createHashTable());
 								}
 							}catch(SQLException e){ e.printStackTrace(); }
@@ -444,14 +444,14 @@ public abstract class Menu{
 				case 10:
 					int profit = 0;
 					try{
-						ResultSet result = Requete.demander(utilisateurDAO.getConnection(), 
+						ResultSet result = Requete.demander(utilisateurDAO.getConnection(),
 							"select SUM(num_telechargements*mela/80)/100*30 AS \"profit\" from application limit 10");
 						if(result.first())
 							profit = result.getInt("profit");
 						System.out.println("\n----------------------------------------\nPROFIT GERANTES = " + profit+ " euros \n----------------------------------------");
 					}catch(SQLException e){ e.printStackTrace(); }
 					break;
-				case 0: 
+				case 0:
 					//Sortie Du Programme (Dernière Option => existant pour tous les type d'utilisateurs)
 					System.exit(0);
 					break;
@@ -460,7 +460,7 @@ public abstract class Menu{
 				}//fin switch
 		}//fin while
 	}//fin méthode
-	
+
 	//Fonction qui boucle jusqu'à on n'a pas inseré un intier entre 0 et index_fin (inclu)
 	public static int choisir(int index_fin){
 		int choix = -1;
@@ -473,7 +473,7 @@ public abstract class Menu{
 				choix = Integer.parseInt(tmp);
 			}catch(NumberFormatException e){ e.printStackTrace(); }
 		}//fin while
-		return choix; 
+		return choix;
 	}//fin méthode choisir
 
 	//Fonction qui genere le menu du client à travers de la fonction genere()
@@ -491,7 +491,7 @@ public abstract class Menu{
 	}
 	//Fonction qui genere le menu du gerante à travers "genere()"
 	public static void gerante(){
-		String[] listeOptionsGerante = {"Meilleurs Ventes", "Statistiques", 
+		String[] listeOptionsGerante = {"Meilleurs Ventes", "Statistiques",
 			"Liste Utilisateurs", "Profit"};
 		developpeur();
 		genere(listeOptionsGerante, 7, "GERANTE");
@@ -531,13 +531,12 @@ public abstract class Menu{
 		Requete.afficheFinTable(info.createHashTable());
 		System.out.println("\nLISTE ACTIONS ---------------");
 		System.out.println("1.\tModifier");
-		System.out.println("0.\tMenu Precedent\n");	
+		System.out.println("0.\tMenu Precedent\n");
 	}
 
-	
 
-	
+
+
 
 
 }//fin classe Menu
-	

@@ -6,8 +6,8 @@ public class Peripherique{ //id_peripherique, nom, id_se, nom_fabriquant
 	public Peripherique(){}
 	public Peripherique(
 		int id, String nom, int id_se, String nom_fabriquant, int id_user
-					  )
-	{ 
+					)
+	{
 		this.id = id;
 		this.id_se = id_se;
 		this.nom = nom;
@@ -20,7 +20,7 @@ public class Peripherique{ //id_peripherique, nom, id_se, nom_fabriquant
 		ht.put("id_se", Integer.toString(this.id_se));
 		ht.put("nom", this.nom);
 		ht.put("nom_fabriquant", this.nom_fabriquant);
-		ht.put("id_user", Integer.toString(this.id_user));		
+		ht.put("id_user", Integer.toString(this.id_user));
 		return ht;
 	}
 	//getters
@@ -45,4 +45,4 @@ public class Peripherique{ //id_peripherique, nom, id_se, nom_fabriquant
 		}
 		System.out.println();
 	}
-}//Fin classe Utilisateur	
+}//Fin classe Utilisateur

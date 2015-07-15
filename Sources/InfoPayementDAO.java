@@ -6,14 +6,14 @@ public class InfoPayementDAO extends DAO<InfoPayement>{
 	public InfoPayementDAO(Connection conn){
 		super(conn);
 	}
-	public boolean delete(InfoPayement obj){ 
+	public boolean delete(InfoPayement obj){
 		return Requete.deleteFrom("info_payement", obj.createHashTable());
 	}
-	public boolean update(InfoPayement info){ 
+	public boolean update(InfoPayement info){
 		return Requete.update("info_payement", info.createHashTable());
 	}
 
-	public InfoPayement find(int id){ 
+	public InfoPayement find(int id){
 		InfoPayement info_trouvee = null;
 		try{
 		ResultSet result = Requete.demander(this.connect, Requete.selectWhere("info_payement", "id", Integer.toString(id)));
@@ -30,7 +30,7 @@ public class InfoPayementDAO extends DAO<InfoPayement>{
 	}
 
 	public void modificationInfoPayement(Utilisateur user){
-		InfoPayement info_payement = info_payement = this.find(user.getId()); 
+		InfoPayement info_payement = info_payement = this.find(user.getId());
 		System.out.println("INSERER...");
 		String type = null;
 		long num_compte = 0;
