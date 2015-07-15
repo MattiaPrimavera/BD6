@@ -10,12 +10,12 @@ A client program for an Online Store
 
 ## Usage
 
-Démarrage:
+Démarrage :
 
     chmod +x start.sh
     ./start.sh
 
-Nettoyage:
+Nettoyage :
 
     chmod +x clean.sh
     ./clean.sh
