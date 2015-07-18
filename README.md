@@ -2,13 +2,13 @@
 
 ## Synopsis
 
-This project is a client program for an **Applications Store**, where the user has access to different functionnalities according to his rights: 
+This project is a client program for an **Applications Store**, where the user has access to different functionnalities according to his rights:
 
-* normal user 
-* developer 
-* system administrator 
+* normal user
+* developer
+* system administrator
 
-Considering the users already signed in to the store and the database correctly in place (check **Requirements** following this section), the normal user can list applications and filter them according to some criterias, modify his personal informations and look at the applications statistics, the developer can also add a new application he developped to the store, while the administrator gets some extra privilegies. 
+Considering the users already signed in to the store and the database correctly in place (check **Requirements** following this section), the normal user can list applications and filter them according to some criterias, modify his personal informations and look at the applications statistics, the developer can also add a new application he developped to the store, while the administrator gets some extra privilegies.
 
 ## Requirements
 
