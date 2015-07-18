@@ -19,24 +19,24 @@ Considering the users already signed in to the store and the database correctly 
 Once Postgresql installed on your machine, you can create a new
 database through `store.psql` file, by using the command:
 
-    psql -U username -d database_name -f mydb.psql
+	psql -U username -d database_name -f mydb.psql
 
 ## Usage
 
 To execute:
 
-    chmod +x start.sh
-    ./start.sh
+	chmod +x start.sh
+	./start.sh
 
 The terminal will ask you for login, as an example of normal user you can use:
 
-    Login: mattia@yahoo.it
-    Password: passwd
+	Login: mattia@yahoo.it
+	Password: passwd
 
 Then just navigate through the menu showed by your terminal by inserting the number of the choice and pressing the `Enter` key.
 The informations will be shown in a well organised table, and since the example database has been created from automatically generated data, it is normal if the applications names look strange to you.
 
 To clean the project directory:
 
-    chmod +x clean.sh
-    ./clean.sh
+	chmod +x clean.sh
+	./clean.sh
