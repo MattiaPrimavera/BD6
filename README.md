@@ -23,18 +23,17 @@ database through `store.psql` file, by using the command:
 
 ## Usage
 
-To Execute :
+To execute:
 
     chmod +x start.sh
     ./start.sh
 
-The Terminal will ask you for login, as an example of normal user you can use
+The terminal will ask you for login, as an example of normal user you can use:
 
     Login: mattia@yahoo.it
     Password: passwd
 
-Then just navigate through the menu showed by your terminal by
-inserting the number of the choice and pressing the `Enter` key.
+Then just navigate through the menu showed by your terminal by inserting the number of the choice and pressing the `Enter` key.
 The informations will be shown in a well organised table, and since the example database has been created from automatically generated data, it is normal if the applications names look strange to you.
 
 To clean the project directory:
