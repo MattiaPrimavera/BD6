@@ -25,7 +25,7 @@ database through `store.psql` file, by using the command:
 
 To execute:
 
-	chmod +x start.sh
+	sudo chmod +x start.sh
 	./start.sh
 
 The terminal will ask you for login, as an example of normal user you can use:
