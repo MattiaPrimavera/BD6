@@ -32,6 +32,15 @@ The terminal will ask you for login, as an example of normal user you can use:
 
 	Login: mattia@yahoo.it
 	Password: passwd
+	
+To log as a Developer try with:
+	
+	Login: mattia@yahoo.com
+	Password: diderot
+
+To log as an Administrator try with:
+	Login: b
+	Password: b
 
 Then just navigate through the menu showed by your terminal by inserting the number of the choice and pressing the `Enter` key.
 The informations will be shown in a well organised table, and since the example database has been created from automatically generated data, it is normal if the applications names look strange to you.
